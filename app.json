@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "altcoin-app",
-    "description": "A very interesting project.",
+    "description": "Track the price of altcoins with this app.",
     "slug": "altcoin-app",
     "privacy": "public",
     "sdkVersion": "30.0.0",
