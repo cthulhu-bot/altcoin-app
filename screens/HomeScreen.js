@@ -16,9 +16,9 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      litecoinPrice: 0,
-      dogecoinPrice: 0,
-      moneroPrice: 0
+      ETH: 0,
+      DOGE: 0,
+      XMR: 0
     };
   }
 
@@ -26,7 +26,23 @@ export default class HomeScreen extends React.Component {
     header: null
   };
 
-  componentDidMount() {}
+  fetchPrices(symbols) {
+    symbols.forEach(symbol => {
+      const baseUrl = `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=BTC`;
+      fetch(baseUrl)
+        .then(result => result.json())
+        .then(response => {
+          this.setState({ [symbol]: response.BTC });
+        });
+    });
+  }
+
+  componentDidMount() {
+    // eth: https://min-api.cryptocompare.com/data/price?fsym=LTC&tsyms=BTC
+    // doge: https://min-api.cryptocompare.com/data/price?fsym=DOGE&tsyms=BTC
+    // monero: https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=BTC
+    this.fetchPrices(["LTC", "DOGE", "XMR"]);
+  }
 
   render() {
     return (
@@ -47,98 +63,66 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View style={{ flex: 1, flexDirection: "column" }}>
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <Text style={styles.getStartedText}>Litecoin</Text>
-            </View>
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <Text style={styles.getStartedText}>Dogecoin</Text>
-            </View>
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <Text style={styles.getStartedText}>Monero</Text>
-            </View>
-          </View>
-
-          {/* <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
             <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "space-around"
+              }}
             >
-              <MonoText style={styles.codeHighlightText}>
-                screens/HomeScreen.js
-              </MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View> */}
-
-          {/* <View style={styles.helpContainer}>
-            <TouchableOpacity
-              onPress={this._handleHelpPress}
-              style={styles.helpLink}
-            >
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
+              <Text
+                style={styles.getStartedText}
+                onPress={() => console.log("BTC")}
+              >
+                <Text>Litecoin</Text>
+                <Text>
+                  {this.state.LTC ? `            ${this.state.LTC} BTC` : ""}
+                </Text>
               </Text>
-            </TouchableOpacity>
-          </View> */}
-        </ScrollView>
-
-        {/* <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}
-          >
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "space-around"
+              }}
+            >
+              <Text
+                style={styles.getStartedText}
+                onPress={() => console.log("DOGE")}
+              >
+                <Text>Dogecoin</Text>
+                <Text>
+                  {this.state.DOGE
+                    ? `                   ${this.state.DOGE} BTC`
+                    : ""}
+                </Text>
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "space-around"
+              }}
+            >
+              <Text
+                style={styles.getStartedText}
+                onPress={() => console.log("XMR")}
+              >
+                <Text>Monero</Text>
+                <Text>
+                  {this.state.XMR
+                    ? `                ${this.state.XMR} BTC`
+                    : ""}
+                </Text>
+              </Text>
+            </View>
           </View>
-        </View> */}
+        </ScrollView>
       </View>
     );
   }
-
-  // _maybeRenderDevelopmentModeWarning() {
-  //   if (__DEV__) {
-  //     const learnMoreButton = (
-  //       <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-  //         Learn more
-  //       </Text>
-  //     );
-
-  //     return (
-  //       <Text style={styles.developmentModeText}>
-  //         Development mode is enabled, your app will be slower but you can use
-  //         useful development tools. {learnMoreButton}
-  //       </Text>
-  //     );
-  //   } else {
-  //     return (
-  //       <Text style={styles.developmentModeText}>
-  //         You are not in development mode, your app will run at full speed.
-  //       </Text>
-  //     );
-  //   }
-  // }
-
-  // _handleLearnMorePress = () => {
-  //   WebBrowser.openBrowserAsync(
-  //     "https://docs.expo.io/versions/latest/guides/development-mode"
-  //   );
-  // };
-
-  // _handleHelpPress = () => {
-  //   WebBrowser.openBrowserAsync(
-  //     "https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes"
-  //   );
-  // };
 }
 
 const styles = StyleSheet.create({
@@ -184,13 +168,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 24,
     color: "rgba(96,100,109, 1)",
     lineHeight: 24,
     textAlign: "left",
-    paddingTop: 5,
+    paddingTop: 20,
     paddingLeft: 20,
-    paddingBottom: 40,
+    paddingBottom: 20,
     borderRadius: 10,
     borderWidth: 0.5,
     borderColor: "black",
