@@ -152,6 +152,7 @@ export default class ChartsScreen extends React.Component {
         ) : (
           <VictoryChart />
         )}
+
         {dogeData.length > 0 ? (
           <View style={{ flex: 1, flexDirection: "column" }}>
             <Text style={{ fontSize: 20, textAlign: "center" }}>Dogecoin</Text>
@@ -178,6 +179,7 @@ export default class ChartsScreen extends React.Component {
         ) : (
           <VictoryChart />
         )}
+
         {moneroData.length > 0 ? (
           <View style={{ flex: 1, flexDirection: "column" }}>
             <Text style={{ fontSize: 20, textAlign: "center" }}>Monero</Text>
