@@ -5,18 +5,14 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-
-import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ETH: 0,
+      LTC: 0,
       DOGE: 0,
       XMR: 0
     };
@@ -38,8 +34,8 @@ export default class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    // eth: https://min-api.cryptocompare.com/data/price?fsym=LTC&tsyms=BTC
-    // doge: https://min-api.cryptocompare.com/data/price?fsym=DOGE&tsyms=BTC
+    // litecoin: https://min-api.cryptocompare.com/data/price?fsym=LTC&tsyms=BTC
+    // dogecoin: https://min-api.cryptocompare.com/data/price?fsym=DOGE&tsyms=BTC
     // monero: https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=BTC
     this.fetchPrices(["LTC", "DOGE", "XMR"]);
   }
@@ -70,10 +66,7 @@ export default class HomeScreen extends React.Component {
                 justifyContent: "space-around"
               }}
             >
-              <Text
-                style={styles.getStartedText}
-                onPress={() => console.log("BTC")}
-              >
+              <Text style={styles.getStartedText}>
                 <Text>Litecoin</Text>
                 <Text>
                   {this.state.LTC ? `            ${this.state.LTC} BTC` : ""}
@@ -87,10 +80,7 @@ export default class HomeScreen extends React.Component {
                 justifyContent: "space-around"
               }}
             >
-              <Text
-                style={styles.getStartedText}
-                onPress={() => console.log("DOGE")}
-              >
+              <Text style={styles.getStartedText}>
                 <Text>Dogecoin</Text>
                 <Text>
                   {this.state.DOGE
@@ -106,10 +96,7 @@ export default class HomeScreen extends React.Component {
                 justifyContent: "space-around"
               }}
             >
-              <Text
-                style={styles.getStartedText}
-                onPress={() => console.log("XMR")}
-              >
+              <Text style={styles.getStartedText}>
                 <Text>Monero</Text>
                 <Text>
                   {this.state.XMR
@@ -130,13 +117,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#4885ed"
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: "center"
-  },
   contentContainer: {
     paddingTop: 30
   },
@@ -151,21 +131,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginTop: 3,
     marginLeft: -10
-  },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)"
-  },
-  codeHighlightContainer: {
-    backgroundColor: "rgba(0,0,0,0.05)",
-    borderRadius: 3,
-    paddingHorizontal: 4
   },
   getStartedText: {
     fontSize: 24,
@@ -184,45 +149,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     width: 360,
     backgroundColor: "#fff",
-    overflow: "hidden"
-  },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  },
-  navigationFilename: {
-    marginTop: 5
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: "center"
-  },
-  helpLink: {
-    paddingVertical: 15
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: "#2e78b7"
+    overflow: "hidden",
+    justifyContent: "space-between"
   }
 });
