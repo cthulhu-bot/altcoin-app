@@ -107,7 +107,11 @@ export default class MoneroChart extends React.Component {
                 Low: {this.state.moneroHighLow.low}
               </Text>
             </View>
-            <VictoryChart theme={VictoryTheme.material} scale={{ x: "time" }}>
+            <VictoryChart
+              padding={{ left: 65, top: 50, right: 50, bottom: 50 }}
+              theme={VictoryTheme.material}
+              scale={{ x: "time" }}
+            >
               <VictoryLine
                 style={{
                   data: { stroke: "#c43a31" },
@@ -116,6 +120,10 @@ export default class MoneroChart extends React.Component {
                 data={moneroData}
                 x="date"
                 y="moneroPrice"
+                animate={{
+                  duration: 2000,
+                  onLoad: { duration: 1000 }
+                }}
               />
             </VictoryChart>
           </View>

@@ -116,6 +116,10 @@ export default class LitecoinChart extends React.Component {
                 data={ltcData}
                 x="date"
                 y="litecoinPrice"
+                animate={{
+                  duration: 2000,
+                  onLoad: { duration: 1000 }
+                }}
               />
             </VictoryChart>
           </View>

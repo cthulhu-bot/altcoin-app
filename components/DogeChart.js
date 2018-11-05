@@ -107,7 +107,11 @@ export default class DogeChart extends React.Component {
                 Low: {this.state.dogeHighLow.low}
               </Text>
             </View>
-            <VictoryChart theme={VictoryTheme.material} scale={{ x: "time" }}>
+            <VictoryChart
+              padding={{ left: 90, top: 50, right: 65, bottom: 50 }}
+              theme={VictoryTheme.material}
+              scale={{ x: "time" }}
+            >
               <VictoryLine
                 style={{
                   data: { stroke: "#c43a31" },
@@ -116,6 +120,10 @@ export default class DogeChart extends React.Component {
                 data={dogeData}
                 x="date"
                 y="dogePrice"
+                animate={{
+                  duration: 2000,
+                  onLoad: { duration: 1000 }
+                }}
               />
             </VictoryChart>
           </View>
