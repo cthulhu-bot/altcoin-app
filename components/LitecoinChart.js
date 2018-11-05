@@ -107,7 +107,11 @@ export default class LitecoinChart extends React.Component {
                 Low: {this.state.ltcHighLow.low}
               </Text>
             </View>
-            <VictoryChart theme={VictoryTheme.material} scale={{ x: "time" }}>
+            <VictoryChart
+              padding={{ left: 60, top: 50, right: 45, bottom: 50 }}
+              theme={VictoryTheme.material}
+              scale={{ x: "time" }}
+            >
               <VictoryLine
                 style={{
                   data: { stroke: "#c43a31" },
