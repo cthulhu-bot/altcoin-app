@@ -1,5 +1,8 @@
 import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import LitecoinBar from "../components/LitecoinBar";
+import DogeBar from "../components/DogeBar";
+import MoneroBar from "../components/MoneroBar";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -45,36 +48,9 @@ export default class HomeScreen extends React.Component {
             style={styles.btcImage}
           />
         </View>
-        <View style={styles.pricingContainer}>
-          <View style={styles.pricingBox}>
-            <Text style={styles.pricingText}>
-              <Text>Litecoin</Text>
-              <Text>
-                {this.state.LTC ? `          ${this.state.LTC} BTC` : ""}
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.pricingContainer}>
-          <View style={styles.pricingBox}>
-            <Text style={styles.pricingText}>
-              <Text>Dogecoin</Text>
-              <Text>
-                {this.state.DOGE ? `      ${this.state.DOGE} BTC` : ""}
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.pricingContainer}>
-          <View style={styles.pricingBox}>
-            <Text style={styles.pricingText}>
-              <Text>Monero</Text>
-              <Text>
-                {this.state.XMR ? `          ${this.state.XMR} BTC` : ""}
-              </Text>
-            </Text>
-          </View>
-        </View>
+        <LitecoinBar LTC={this.state.LTC} />
+        <DogeBar DOGE={this.state.DOGE} />
+        <MoneroBar XMR={this.state.XMR} />
       </ScrollView>
     );
   }
@@ -82,7 +58,6 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#4885ed"
   },
   contentContainer: {
@@ -90,8 +65,8 @@ const styles = StyleSheet.create({
   },
   viewportContainer: {
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 20
+    marginTop: 40,
+    marginBottom: 40
   },
   btcImage: {
     width: 100,
@@ -106,6 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   pricingBox: {
+    color: "rgba(96,100,109, 1)",
     paddingTop: 20,
     paddingLeft: 20,
     paddingBottom: 20,
@@ -119,9 +95,5 @@ const styles = StyleSheet.create({
     width: 360,
     backgroundColor: "#fff",
     overflow: "hidden"
-  },
-  pricingText: {
-    color: "rgba(96,100,109, 1)",
-    fontSize: 24
   }
 });
