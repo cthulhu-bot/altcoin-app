@@ -92,11 +92,18 @@ export default class DogeChart extends React.Component {
                 Dogecoin
               </Text>
             </View>
-            <View style={{ flex: 1, flexDirection: "row", paddingTop: 20 }}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                paddingTop: 20,
+                justifyContent: "space-between"
+              }}
+            >
               <Text style={{ paddingLeft: 20, color: "green" }}>
                 High: {this.state.dogeHighLow.high}
               </Text>
-              <Text style={{ paddingLeft: 200, color: "red" }}>
+              <Text style={{ color: "red" }}>
                 Low: {this.state.dogeHighLow.low}
               </Text>
             </View>
@@ -113,7 +120,26 @@ export default class DogeChart extends React.Component {
             </VictoryChart>
           </View>
         ) : (
-          <VictoryChart />
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              paddingLeft: 20,
+              paddingRight: 20,
+              justifyContent: "space-around",
+              alignItems: "center",
+              padding: 20
+            }}
+          >
+            <Image
+              source={require("../assets/images/ajax_loader_blue_32.gif")}
+              style={{
+                width: 50,
+                height: 50,
+                resizeMode: "contain"
+              }}
+            />
+          </View>
         )}
       </React.Fragment>
     );

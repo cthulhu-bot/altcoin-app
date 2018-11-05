@@ -14,7 +14,8 @@ export default class LitecoinBar extends React.Component {
           borderRadius: 10,
           marginLeft: 30,
           marginRight: 30,
-          marginBottom: 30
+          marginBottom: 30,
+          maxHeight: 100
         }}
       >
         <Image
@@ -41,7 +42,18 @@ export default class LitecoinBar extends React.Component {
             marginTop: 2
           }}
         >
-          {this.props.LTC ? `${this.props.LTC} BTC` : ""}
+          {this.props.LTC ? (
+            `${this.props.LTC} BTC`
+          ) : (
+            <Image
+              source={require("../assets/images/ajax_loader_blue_32.gif")}
+              style={{
+                width: 30,
+                height: 30,
+                resizeMode: "contain"
+              }}
+            />
+          )}
         </Text>
       </View>
     );

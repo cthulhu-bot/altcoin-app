@@ -40,7 +40,18 @@ export default class MoneroBar extends React.Component {
             marginTop: 2
           }}
         >
-          {this.props.XMR ? `${this.props.XMR} BTC` : ""}
+          {this.props.XMR ? (
+            `${this.props.XMR} BTC`
+          ) : (
+            <Image
+              source={require("../assets/images/ajax_loader_blue_32.gif")}
+              style={{
+                width: 30,
+                height: 30,
+                resizeMode: "contain"
+              }}
+            />
+          )}
         </Text>
       </View>
     );

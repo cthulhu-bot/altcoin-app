@@ -41,7 +41,18 @@ export default class DogeBar extends React.Component {
             marginTop: 2
           }}
         >
-          {this.props.DOGE ? `${this.props.DOGE} BTC` : ""}
+          {this.props.DOGE ? (
+            `${this.props.DOGE} BTC`
+          ) : (
+            <Image
+              source={require("../assets/images/ajax_loader_blue_32.gif")}
+              style={{
+                width: 30,
+                height: 30,
+                resizeMode: "contain"
+              }}
+            />
+          )}
         </Text>
       </View>
     );
