@@ -74,26 +74,5 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginTop: 3,
     marginLeft: -10
-  },
-  pricingContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around"
-  },
-  pricingBox: {
-    color: "rgba(96,100,109, 1)",
-    paddingTop: 20,
-    paddingLeft: 20,
-    paddingBottom: 20,
-    borderRadius: 10,
-    borderWidth: 0.5,
-    borderColor: "black",
-    marginTop: 20,
-    marginBottom: 30,
-    marginLeft: 10,
-    marginRight: 10,
-    width: 360,
-    backgroundColor: "#fff",
-    overflow: "hidden"
   }
 });
