@@ -11,9 +11,7 @@ export default class MoneroBar extends React.Component {
           justifyContent: "space-around",
           backgroundColor: "#fff",
           padding: 20,
-          borderRadius: 10,
-          marginLeft: 30,
-          marginRight: 30
+          borderRadius: 10
         }}
       >
         <Image

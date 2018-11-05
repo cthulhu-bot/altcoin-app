@@ -10,11 +10,8 @@ export default class LitecoinBar extends React.Component {
           flexDirection: "row",
           justifyContent: "space-around",
           backgroundColor: "#fff",
-          padding: 20,
           borderRadius: 10,
-          marginLeft: 30,
-          marginRight: 30,
-          marginBottom: 30,
+          padding: 20,
           maxHeight: 100
         }}
       >
